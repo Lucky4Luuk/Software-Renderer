@@ -21,8 +21,26 @@ end
 function FixedUpdate()
   if love.keyboard.isDown("e") then
     mesh.camera_position = mesh.camera_position - mesh.vec3(0,2*timestep,0)
-  elseif love.keyboard.isDown("q") then
+  end
+  if love.keyboard.isDown("q") then
     mesh.camera_position = mesh.camera_position + mesh.vec3(0,2*timestep,0)
+  end
+  if love.keyboard.isDown("a") then
+    mesh.camera_position = mesh.camera_position - mesh.vec3(3*timestep,0,0)
+  end
+  if love.keyboard.isDown("d") then
+    mesh.camera_position = mesh.camera_position + mesh.vec3(3*timestep,0,0)
+  end
+  if love.keyboard.isDown("s") then
+    mesh.camera_position = mesh.camera_position - mesh.vec3(0,0,3*timestep)
+  end
+  if love.keyboard.isDown("w") then
+    mesh.camera_position = mesh.camera_position + mesh.vec3(0,0,3*timestep)
+  end
+  for i=1, #objects do
+    if objects[i].name == "cube" then
+      objects[i]:rotate(45*timestep,45*timestep,0)
+    end
   end
   for i=1, #objects do
     if objects[i].name == "cube" then
